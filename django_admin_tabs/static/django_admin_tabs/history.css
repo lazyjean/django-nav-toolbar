@@ -1,0 +1,63 @@
+#history-bar {
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    gap: 4px;
+}
+
+#history-bar-scroll {
+    display: flex;
+    overflow-x: auto;
+    flex: 1;
+    gap: 4px;
+    padding: 2px 0;
+}
+
+#history-bar-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+#history-bar-scroll::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 2px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.history-item:hover {
+    background: #e5e5e5;
+}
+
+.history-item.active {
+    background: #417690;
+    color: #fff;
+    border-color: #417690;
+}
+
+.history-item .history-close-btn {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-left: 2px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.history-item .history-close-btn:hover {
+    opacity: 1;
+}

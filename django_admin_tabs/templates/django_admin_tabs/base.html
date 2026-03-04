@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin_history_bar/history.css' %}">
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+<script src="{% static 'admin_history_bar/history.js' %}"></script>
+{% endblock %}
