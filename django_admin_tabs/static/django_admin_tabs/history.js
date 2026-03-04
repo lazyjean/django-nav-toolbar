@@ -1,5 +1,6 @@
 (function() {
-    const STORAGE_KEY = 'admin_history_bar';
+    // 使用域名作为 key 的一部分，区分不同项目
+    const STORAGE_KEY = 'admin_history_bar_' + window.location.hostname.replace(/\./g, '_');
     const MAX_ITEMS = 20;
     
     function getHistory() {
@@ -17,13 +18,42 @@
     function getPageTitle() {
         const breadcrumb = document.querySelector('.breadcrumbs');
         if (breadcrumb) {
+            // 获取所有面包屑链接
             const items = breadcrumb.querySelectorAll('a');
-            if (items.length > 1) {
-                return items[items.length - 1].textContent.trim();
-            } else if (items.length === 1) {
-                return items[0].textContent.trim();
+            
+            if (items.length > 0) {
+                // 排除 "Home"，收集其他所有面包屑文本
+                const pathParts = [];
+                items.forEach(function(item) {
+                    const text = item.textContent.trim();
+                    // 跳过 Home 链接
+                    if (text && text !== 'Home') {
+                        pathParts.push(text);
+                    }
+                });
+                
+                // 如果面包屑后面还有文本（当前页面名称），也加上
+                const breadcrumbText = breadcrumb.textContent;
+                const lastLink = items[items.length - 1];
+                const afterLastLink = breadcrumbText.substring(
+                    breadcrumbText.indexOf(lastLink.textContent) + lastLink.textContent.length
+                ).trim();
+                
+                // 提取当前页面名称（在最后一个链接之后，分隔符之前）
+                if (afterLastLink) {
+                    const currentPage = afterLastLink.replace(/^[›\s]+/, '').split('›')[0].trim();
+                    if (currentPage && currentPage !== pathParts[pathParts.length - 1]) {
+                        pathParts.push(currentPage);
+                    }
+                }
+                
+                if (pathParts.length > 0) {
+                    return pathParts.join(' › ');
+                }
             }
         }
+        
+        // 备用方案：使用 h1 标题
         const header = document.querySelector('h1');
         return header ? header.textContent.trim() : '未知页面';
     }
@@ -63,6 +93,10 @@
     function addCurrentPage() {
         const url = window.location.pathname + window.location.search;
         if (!url.includes('/admin/')) return;
+        // 不保存登录页面到历史记录
+        if (window.location.pathname === '/admin/login' || window.location.pathname.startsWith('/admin/login/')) {
+            return;
+        }
         
         const history = getHistory();
         const existingIndex = history.findIndex(h => h.url === url);
@@ -88,6 +122,12 @@
     }
     
     function initHistoryBar() {
+        // 不在登录页面显示历史记录栏
+        const pathname = window.location.pathname;
+        if (pathname === '/admin/login' || pathname.startsWith('/admin/login/')) {
+            return;
+        }
+        
         const bar = document.createElement('div');
         bar.id = 'history-bar';
         bar.innerHTML = `<div id="history-bar-scroll"></div>`;

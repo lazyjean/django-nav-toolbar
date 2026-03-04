@@ -26,7 +26,7 @@ pip install django-admin-tabs
 Or install the latest version from GitHub:
 
 ```bash
-pip install git+https://github.com/yourusername/django_admin_tabs.git
+pip install git+https://github.com/lazyjean/django_admin_tabs.git
 ```
 
 ## Usage
@@ -86,7 +86,7 @@ You can customize the behavior by modifying the JavaScript file at:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/django_admin_tabs.git
+git clone https://github.com/lazyjean/django_admin_tabs.git
 cd django_admin_tabs
 
 # Install in development mode

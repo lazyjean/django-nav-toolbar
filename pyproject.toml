@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-admin-tabs"
-version = "1.0.0"
+version = "0.0.1"
 description = "Django admin extension with history bar tabs"
 readme = "README.md"
 license = {text = "MIT"}
@@ -30,9 +30,9 @@ classifiers = [
 keywords = ["django", "admin", "tabs", "history"]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/django_admin_tabs"
-Repository = "https://github.com/yourusername/django_admin_tabs"
-Issues = "https://github.com/yourusername/django_admin_tabs/issues"
+Homepage = "https://github.com/lazyjean/django_admin_tabs"
+Repository = "https://github.com/lazyjean/django_admin_tabs"
+Issues = "https://github.com/lazyjean/django_admin_tabs/issues"
 
 [project.optional-dependencies]
 dev = [
