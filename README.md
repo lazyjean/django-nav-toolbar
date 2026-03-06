@@ -144,8 +144,8 @@ Simply reorder your `INSTALLED_APPS` as shown in the Usage section above.
 
 ```bash
 # Clone the repository
-git clone https://github.com/lazyjean/nav_toolbar.git
-cd nav_toolbar
+git clone https://github.com/lazyjean/django-nav-toolbar.git
+cd django-nav-toolbar
 
 # Install in development mode
 pip install -e .
