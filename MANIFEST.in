@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include nav_toolbar/static *
+recursive-include nav_toolbar/templates *
+recursive-exclude nav_toolbar/__pycache__ *
+recursive-exclude nav_toolbar/migrations/__pycache__ *
